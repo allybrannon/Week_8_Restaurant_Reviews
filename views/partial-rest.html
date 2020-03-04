@@ -4,8 +4,8 @@
   <li><b>Address:</b> ${restaurant.address}</li>
   `).join('')}
 </ul>
-
-<h2>REVIEWS</h2>
+<br />
+<h2>Leave your review</h2>
 
 <hr />
 
@@ -24,5 +24,12 @@
   </label>
   <button type="submit">Save Review</button>
 </form>
+<br />
+<h2>Past Reviews</h2>
+<hr />
+${reviewList.map(review => { return `
+<h3>${review.title}</h3>
+<p>${review.review}</p>
+` }).join('')}
 
 <a href="/">Return to homepage</a>

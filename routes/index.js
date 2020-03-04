@@ -16,6 +16,23 @@ router.get("/", async (req, res, next) => {
   });
 });
 
+router.get("/:id?", async (req, res, next) => {
+  const id = req.params.id;
+  const data = await restaurantModel.getById(id);
+  const reviewList = await restaurantModel.getReviewsByRestaurantId(id);
+
+  res.render("template", {
+    locals: {
+      title: data[0].name,
+      data: data,
+      reviewList: reviewList
+    },
+    partials: {
+      partial: "partial-rest"
+    }
+  });
+});
+
 router.post("/", async function(req, res) {
   const { restaurant_id, review_title, review_text } = req.body;
   const idAsInt = parseInt(restaurant_id);

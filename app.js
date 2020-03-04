@@ -5,7 +5,6 @@ const express = require("express"),
   es6Renderer = require("express-es6-template-engine");
 
 const indexRouter = require("./routes/index");
-const restListRouter = require("./routes/restlist");
 
 const app = express();
 
@@ -20,6 +19,5 @@ app.set("views", "./views");
 app.set("view engine", "html");
 
 app.use("/", indexRouter);
-app.use("/restlist", restListRouter);
 
 module.exports = app;

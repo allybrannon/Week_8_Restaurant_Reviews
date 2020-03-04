@@ -28,6 +28,19 @@ class RestaurantModel {
       return error;
     }
   }
+
+  static async getReviewsByRestaurantId(id) {
+    try {
+      const response = await db.any(
+        `SELECT * FROM review WHERE restaurant_id = ${id};`
+      );
+      return response;
+    } catch (error) {
+      console.error("ERROR: ", error);
+      return error;
+    }
+  }
+
   static async addReview(id, review_title, review_text) {
     try {
       const response = await db.one(
