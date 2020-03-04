@@ -22,6 +22,7 @@ class RestaurantModel {
       const response = await db.any(
         `SELECT * FROM restaurant WHERE restaurant.id = ${id};`
       );
+      console.log(response);
       return response;
     } catch (error) {
       console.error("ERROR: ", error);

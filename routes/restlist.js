@@ -2,17 +2,17 @@ const express = require("express");
 const router = express.Router();
 const restaurantModel = require("../models/restaurantModel");
 
-/* GET home page. */
-router.get("/", async (req, res, next) => {
-  const data = await restaurantModel.getAllRestaurants();
+router.get("/:id?", async (req, res, next) => {
+  const id = req.params.id;
+  const data = await restaurantModel.getById(id);
 
   res.render("template", {
     locals: {
-      title: "Restaurants",
+      title: data[0].name,
       data: data
     },
     partials: {
-      partial: "partial-index"
+      partial: "partial-rest"
     }
   });
 });

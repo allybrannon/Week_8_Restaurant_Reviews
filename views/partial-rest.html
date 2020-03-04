@@ -1,0 +1,6 @@
+<ul>
+  ${data.map(restaurant =>`
+  <li>${restaurant.name}: ${restaurant.category}</li>
+  <li>${restaurant.address}</li>
+  `).join('')}
+</ul>
